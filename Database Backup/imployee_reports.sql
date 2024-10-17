@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 08:45 AM
+-- Generation Time: Oct 17, 2024 at 09:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,7 +33,7 @@ CREATE TABLE `imployee_reports` (
   `زمان اجرای فعالیت` varchar(40) NOT NULL,
   `مربوط پلان عملیاتی/خارج فعالیت عملیاتی` varchar(80) NOT NULL,
   `فیصدی پیشرفت` varchar(40) NOT NULL,
-  `(نتیجه(دستاورد` varchar(40) NOT NULL,
+  `نتیجه/دستاورد` varchar(40) NOT NULL,
   `مشکلات/نواقص و کمبودات` varchar(50) NOT NULL,
   `راه حل پیشنهادی` varchar(60) NOT NULL,
   `ملاحظات` varchar(60) NOT NULL
