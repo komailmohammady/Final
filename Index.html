@@ -16,28 +16,37 @@
             <!-- Sidebar -->
             <div class="col-md-2 sidebar">
                 <img src="img/logo.png" alt="لوگوی داشبورد" class="logo-img">
+                <a href="settings.html"><i class="bi bi-house-door"></i> داشبورد</a>
                 
-                <!-- لینک با data-bs-toggle برای فعال سازی collapse -->
-                <a href="#demo" data-bs-toggle="collapse">
+                <!-- لینک کارمندان با data-bs-toggle برای فعال سازی collapse -->
+                <a href="#employeesMenu" data-bs-toggle="collapse" aria-expanded="false" class="d-flex align-items-center">
                     <i class="bi bi-person"></i> کارمندان
+                    <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <div id="demo" class="collapse">
-                    ثبت کارمند
+                <div id="employeesMenu" class="collapse">
+                    <ul>
+                        <li><a href="add_employee.html" class="d-block">ثبت کارمند</a></li>
+                        <li><a href="employee_list.html" class="d-block">لیست کارمندان</a></li>
+                    </ul>
                 </div>
-                <div id="demo" class="collapse">
-                    لیست کارمندان
-                </div>
-                <a href="#report" data-bs-toggle="collapse">
-                    <i class="bi bi-file-earmark-text"></i> گزارشات
-                </a>
-                <div id="report" class="collapse">
-                    ثبت گزارش
-                </div>
-                <div id="report" class="collapse">
-                    لیست گزارشات
-                </div>
-                <a href="#"><i class="bi bi-gear"></i> تنظیمات</a>
-                <a href="#"><i class="bi bi-box-arrow-right"></i> خروج</a>
+                
+
+<!-- لینک گزارشات با data-bs-toggle برای فعال سازی collapse -->
+<a href="#reportsMenu" data-bs-toggle="collapse" aria-expanded="false" class="d-flex align-items-center">
+    <i class="bi bi-file-earmark-text"></i> گزارشات
+    <i class="bi bi-chevron-down ms-auto"></i>
+</a>
+<div id="reportsMenu" class="collapse">
+    <ul>
+        <li><a href="add_report.html" class="d-block">ثبت گزارش</a></li>
+        <li><a href="report_list.html" class="d-block">لیست گزارشات</a></li>
+    </ul>
+</div>
+
+
+                <!-- لینک‌های ثابت دیگر -->
+                <a href="settings.html"><i class="bi bi-gear"></i> تنظیمات</a>
+                <a href="logout.html"><i class="bi bi-box-arrow-right"></i> خروج</a>
             </div>
             
 
