@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'BNazanin';
+    src: url('path-to-font/BNazanin.woff2') format('woff2');
+}
+
+body {
+    font-family: 'BNazanin', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: DodgerBlue;
+    color: white;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: DodgerBlue;
+}
+
+.content {
+    padding: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.sidebar i {
+    margin-right: 10px;
+}
+
+/* استایل برای تغییر سایز عکس */
+.logo-img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: auto;
+}
+
+/* استایل فوتر */
+footer {
+    background-color: DodgerBlue;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
