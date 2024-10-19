@@ -37,8 +37,8 @@
                 </a>
                 <div id="reportsMenu" class="collapse">
                     <ul>
-                        <li><a href="dashboardpages/Employee_Report.php" class="d-block">ثبت گزارش</a></li>
-                        <li><a href="report_list.html" class="d-block">لیست گزارشات</a></li>
+                        <li><a href="dashboardpages/EmployeeReport.php" class="d-block">ثبت گزارش</a></li>
+                        <li><a href="dashboardpages/ShowEmployeeReport.php" class="d-block">لیست گزارشات</a></li>
                     </ul>
                 </div>
 
@@ -134,7 +134,7 @@
 
     <!-- فوتر -->
     <footer>
-        <p>&copy; 2024 تمامی حقوق محفوظ است. طراحی شده توسط محصلین ممتاز تکنالوژی کمپیوتر.</p>
+        <p>&copy; 2024 تمام حقوق محفوظ است!</p>
     </footer>
 
     <!-- Bootstrap JS and dependencies -->

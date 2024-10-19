@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 08:45 AM
+-- Generation Time: Oct 17, 2024 at 07:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,18 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imployee_reports`
+-- Table structure for table `register`
 --
 
-CREATE TABLE `imployee_reports` (
+CREATE TABLE `register` (
   `ID` int(11) NOT NULL,
-  `گزارش فعالیت های انجام شده` varchar(80) NOT NULL,
-  `زمان اجرای فعالیت` varchar(40) NOT NULL,
-  `مربوط پلان عملیاتی/خارج فعالیت عملیاتی` varchar(80) NOT NULL,
-  `فیصدی پیشرفت` varchar(40) NOT NULL,
-  `(نتیجه(دستاورد` varchar(40) NOT NULL,
-  `مشکلات/نواقص و کمبودات` varchar(50) NOT NULL,
-  `راه حل پیشنهادی` varchar(60) NOT NULL,
+  `اسم` varchar(40) NOT NULL,
+  `تخلص` varchar(40) NOT NULL,
+  `ولد` varchar(40) NOT NULL,
+  `بست` varchar(40) NOT NULL,
+  `عنوان بست` varchar(40) NOT NULL,
+  `آمریت مربوطه` varchar(40) NOT NULL,
+  `نوعیت وظیفه` varchar(40) NOT NULL,
+  `کاربر` varchar(40) NOT NULL,
+  `رمز عبور` varchar(40) NOT NULL,
+  `تایید رمز عبور` varchar(40) NOT NULL,
   `ملاحظات` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -44,20 +47,11 @@ CREATE TABLE `imployee_reports` (
 --
 
 --
--- Indexes for table `imployee_reports`
+-- Indexes for table `register`
 --
-ALTER TABLE `imployee_reports`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `imployee_reports`
---
-ALTER TABLE `imployee_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `register`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `کاربر` (`کاربر`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
