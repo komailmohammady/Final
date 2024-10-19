@@ -25,8 +25,8 @@
                 </a>
                 <div id="employeesMenu" class="collapse">
                     <ul>
-                        <li><a href="add_employee.html" class="d-block">ثبت کارمند</a></li>
-                        <li><a href="employee_list.html" class="d-block">لیست کارمندان</a></li>
+                        <li><a href="dashboardpages/EmployeeRegister.php" class="d-block">ثبت کارمند</a></li>
+                        <li><a href="dashboardpages/ShowEmployee.php" class="d-block">لیست کارمندان</a></li>
                     </ul>
                 </div>
 
@@ -37,7 +37,7 @@
                 </a>
                 <div id="reportsMenu" class="collapse">
                     <ul>
-                        <li><a href="add_report.html" class="d-block">ثبت گزارش</a></li>
+                        <li><a href="dashboardpages/Employee_Report.php" class="d-block">ثبت گزارش</a></li>
                         <li><a href="report_list.html" class="d-block">لیست گزارشات</a></li>
                     </ul>
                 </div>
