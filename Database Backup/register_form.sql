@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 07:27 AM
+-- Generation Time: Oct 19, 2024 at 11:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,22 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `register`
+-- Table structure for table `register_form`
 --
 
-CREATE TABLE `register` (
+CREATE TABLE `register_form` (
   `ID` int(11) NOT NULL,
-  `اسم` varchar(40) NOT NULL,
-  `تخلص` varchar(40) NOT NULL,
-  `ولد` varchar(40) NOT NULL,
-  `بست` varchar(40) NOT NULL,
-  `عنوان بست` varchar(40) NOT NULL,
-  `آمریت مربوطه` varchar(40) NOT NULL,
-  `نوعیت وظیفه` varchar(40) NOT NULL,
-  `کاربر` varchar(40) NOT NULL,
-  `رمز عبور` varchar(40) NOT NULL,
-  `تایید رمز عبور` varchar(40) NOT NULL,
-  `ملاحظات` varchar(60) NOT NULL
+  `Name` varchar(50) NOT NULL,
+  `Last_Name` varchar(50) NOT NULL,
+  `F_Name` varchar(50) NOT NULL,
+  `User` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `Conform_Password` varchar(50) NOT NULL,
+  `Post_Type` varchar(60) NOT NULL,
+  `Job_Type` varchar(60) NOT NULL,
+  `Post_No` int(30) NOT NULL,
+  `Relevant_Department` varchar(60) NOT NULL,
+  `Observation` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -47,11 +47,10 @@ CREATE TABLE `register` (
 --
 
 --
--- Indexes for table `register`
+-- Indexes for table `register_form`
 --
-ALTER TABLE `register`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `کاربر` (`کاربر`);
+ALTER TABLE `register_form`
+  ADD PRIMARY KEY (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
