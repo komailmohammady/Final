@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 08:45 AM
+-- Generation Time: Oct 19, 2024 at 11:50 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,16 +28,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `imployee_reports` (
-  `ID` int(11) NOT NULL,
-  `گزارش فعالیت های انجام شده` varchar(80) NOT NULL,
-  `زمان اجرای فعالیت` varchar(40) NOT NULL,
-  `مربوط پلان عملیاتی/خارج فعالیت عملیاتی` varchar(80) NOT NULL,
-  `فیصدی پیشرفت` varchar(40) NOT NULL,
-  `(نتیجه(دستاورد` varchar(40) NOT NULL,
-  `مشکلات/نواقص و کمبودات` varchar(50) NOT NULL,
-  `راه حل پیشنهادی` varchar(60) NOT NULL,
-  `ملاحظات` varchar(60) NOT NULL
+  `id` int(11) NOT NULL,
+  `employee_name` varchar(100) DEFAULT NULL,
+  `did_reports` varchar(150) DEFAULT NULL,
+  `activity_time` varchar(200) DEFAULT NULL,
+  `plan` varchar(200) DEFAULT NULL,
+  `improve_precentage` varchar(22) DEFAULT NULL,
+  `result` varchar(230) DEFAULT NULL,
+  `problems` varchar(99) DEFAULT NULL,
+  `resolve_sugestion` varchar(99) DEFAULT NULL,
+  `observition` varchar(240) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `imployee_reports`
+--
+
+INSERT INTO `imployee_reports` (`id`, `employee_name`, `did_reports`, `activity_time`, `plan`, `improve_precentage`, `result`, `problems`, `resolve_sugestion`, `observition`) VALUES
+(1, 'wrt', 'rwtwt', 'ertrw', 'wertwe', 'rewt', 'erwt', 'erwtwet', NULL, 'ewrtrwre');
 
 --
 -- Indexes for dumped tables
@@ -47,7 +55,8 @@ CREATE TABLE `imployee_reports` (
 -- Indexes for table `imployee_reports`
 --
 ALTER TABLE `imployee_reports`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `employee_name` (`employee_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -57,7 +66,7 @@ ALTER TABLE `imployee_reports`
 -- AUTO_INCREMENT for table `imployee_reports`
 --
 ALTER TABLE `imployee_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
