@@ -89,3 +89,9 @@ textarea{
     width: 250px;
     padding:2.5px 13px;
 }
+textarea{
+    margin-top: 5px;
+    border-radius:5px;
+    width: 250px;
+    padding:2.5px 13px;
+}
