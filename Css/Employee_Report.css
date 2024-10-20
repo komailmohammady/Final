@@ -49,8 +49,12 @@ label {
 }
 
 input[type="text"],
+<<<<<<< HEAD
 input[type="number"],
 input[type="password"] {
+=======
+input[type="number"],input[type="password"],textarea, select {
+>>>>>>> ffe61e3aa5fa4ec7f803a48a0ebfa718b0a1c8b0
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -80,13 +84,45 @@ button {
 
 button:hover {
     background-color: rgb(19, 97, 174);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+}
+textarea{
+    border-radius:5px;
+    width: 275px;
+    padding:0.2px 13px;
+}
+select{
+    width:280px;
+    height: 46px;
+    border-radius:5px;
+    outline: none;
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 43269a35badf523902af525aacd1dec7bf7551d8
+>>>>>>> ffe61e3aa5fa4ec7f803a48a0ebfa718b0a1c8b0
 }
 
 select {
     width: 100%; /* تغییر عرض انتخاب به 100% */
     height: 46px;
     border-radius: 5px;
+<<<<<<< HEAD
     border: 1px solid #ccc;
     padding: 10px; /* اضافه کردن padding برای زیباتر شدن */
     box-sizing: border-box; /* تنظیم box model */
 }
+=======
+    outline: none;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 611f05667c9aa7d880a27fda04f50c9ef6ebfdcd
+>>>>>>> 43269a35badf523902af525aacd1dec7bf7551d8
+>>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
+}
+>>>>>>> ffe61e3aa5fa4ec7f803a48a0ebfa718b0a1c8b0
