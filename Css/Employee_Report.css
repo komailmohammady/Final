@@ -63,7 +63,7 @@ button {
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
     font-family: 'B Nazanin';
@@ -73,4 +73,11 @@ button {
 
 button:hover {
     background-color: rgb(19, 97, 174);
+}
+
+select {
+    width: 280px;
+    height: 46px;
+    border-radius: 5px;
+    outline: none;
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2024 at 11:19 AM
+-- Generation Time: Oct 20, 2024 at 07:38 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `register_form` (
-  `ID` int(11) NOT NULL,
+  `id` int(11) DEFAULT NULL,
   `Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
   `F_Name` varchar(50) NOT NULL,
-  `User` varchar(50) NOT NULL,
+  `user` varchar(88) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Conform_Password` varchar(50) NOT NULL,
   `Post_Type` varchar(60) NOT NULL,
@@ -50,7 +50,8 @@ CREATE TABLE `register_form` (
 -- Indexes for table `register_form`
 --
 ALTER TABLE `register_form`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`user`),
+  ADD UNIQUE KEY `id` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
