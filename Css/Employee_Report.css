@@ -73,6 +73,7 @@ button {
 
 button:hover {
     background-color: rgb(19, 97, 174);
+<<<<<<< HEAD
 }
 
 select {
@@ -80,4 +81,6 @@ select {
     height: 46px;
     border-radius: 5px;
     outline: none;
+=======
+>>>>>>> 611f05667c9aa7d880a27fda04f50c9ef6ebfdcd
 }

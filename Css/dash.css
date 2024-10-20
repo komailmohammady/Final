@@ -22,8 +22,13 @@ body {
 
 .sidebar {
     height: 100vh;
+<<<<<<< HEAD
+    background-color: #0E2954;
+    color: white;
+=======
     background-color: var(--primary-color);
     color: var(--text-color);
+>>>>>>> 54408c069dca37f731bc15fed3cf08f88754c1d2
     padding-top: 20px;
 }
 
@@ -63,6 +68,7 @@ body {
     margin: 0 auto;
     width: 200px;
     height: auto;
+    
 }
 
 /* Footer Styles */
