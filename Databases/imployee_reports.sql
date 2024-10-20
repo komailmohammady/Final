@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2024 at 11:50 AM
+-- Generation Time: Oct 20, 2024 at 07:37 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `imployee_reports` (
   `id` int(11) NOT NULL,
-  `employee_name` varchar(100) DEFAULT NULL,
+  `username` varchar(90) NOT NULL,
   `did_reports` varchar(150) DEFAULT NULL,
   `activity_time` varchar(200) DEFAULT NULL,
   `plan` varchar(200) DEFAULT NULL,
@@ -41,13 +41,6 @@ CREATE TABLE `imployee_reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `imployee_reports`
---
-
-INSERT INTO `imployee_reports` (`id`, `employee_name`, `did_reports`, `activity_time`, `plan`, `improve_precentage`, `result`, `problems`, `resolve_sugestion`, `observition`) VALUES
-(1, 'wrt', 'rwtwt', 'ertrw', 'wertwe', 'rewt', 'erwt', 'erwtwet', NULL, 'ewrtrwre');
-
---
 -- Indexes for dumped tables
 --
 
@@ -56,17 +49,17 @@ INSERT INTO `imployee_reports` (`id`, `employee_name`, `did_reports`, `activity_
 --
 ALTER TABLE `imployee_reports`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `employee_name` (`employee_name`);
+  ADD KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Constraints for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `imployee_reports`
+-- Constraints for table `imployee_reports`
 --
 ALTER TABLE `imployee_reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ADD CONSTRAINT `imployee_reports_ibfk_1` FOREIGN KEY (`username`) REFERENCES `register_form` (`user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
