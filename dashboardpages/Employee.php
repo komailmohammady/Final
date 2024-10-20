@@ -25,8 +25,8 @@
                 </a>
                 <div id="employeesMenu" class="collapse">
                     <ul>
-                        <li><a href="add_employee.html" class="d-block">ثبت کارمند</a></li>
-                        <li><a href="employee_list.html" class="d-block">لیست کارمندان</a></li>
+                        <li><a href="dashboardpages/EmployeeRegister.php" class="d-block">ثبت کارمند</a></li>
+                        <li><a href="dashboardpages/ShowEmployee.php" class="d-block">لیست کارمندان</a></li>
                     </ul>
                 </div>
 
@@ -37,8 +37,8 @@
                 </a>
                 <div id="reportsMenu" class="collapse">
                     <ul>
-                        <li><a href="add_report.html" class="d-block">ثبت گزارش</a></li>
-                        <li><a href="report_list.html" class="d-block">لیست گزارشات</a></li>
+                        <li><a href="dashboardpages/EmployeeReport.php" class="d-block">ثبت گزارش</a></li>
+                        <li><a href="dashboardpages/ShowEmployeeReport.php" class="d-block">لیست گزارشات</a></li>
                     </ul>
                 </div>
 
@@ -134,7 +134,11 @@
 
     <!-- فوتر -->
     <footer>
+<<<<<<<< HEAD:Index.php
+        <p>&copy; 2024 تمام حقوق محفوظ است!</p>
+========
         <p>&copy; 2024 تمامی حقوق محفوظ است. طراحی شده توسط محصلین ممتاز تکنالوژی کمپیوتر.</p>
+>>>>>>>> 611f05667c9aa7d880a27fda04f50c9ef6ebfdcd:dashboardpages/Employee.php
     </footer>
 
     <!-- Bootstrap JS and dependencies -->
