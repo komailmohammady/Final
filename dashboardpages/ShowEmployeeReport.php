@@ -18,8 +18,23 @@ if (isset($_POST['delete'])) {
     $conn->query("DELETE FROM imployee_reports WHERE id = $id");
 }
 
-// Fetch data from the register_form table
-$sql = "SELECT id, username, did_reports, activity_time, plan, improve_precentage, result, problems, resolve_sugestion, observition FROM imployee_reports";
+// Initialize variables for date range
+$startDate = '';
+$endDate = '';
+
+// Handle date range request
+if (isset($_POST['search'])) {
+    $startDate = $_POST['start_date'];
+    $endDate = $_POST['end_date'];
+}
+
+// Fetch data from the imployee_reports table
+$sql = "SELECT id, username, did_reports, activity_time, plan, improve_precentage, result, problems, resolve_sugestion, Reg_Date, observition FROM imployee_reports";
+
+if ($startDate && $endDate) {
+    $sql .= " WHERE Reg_Date BETWEEN '$startDate' AND '$endDate'";
+}
+
 $result = $conn->query($sql);
 
 // Start HTML
@@ -74,10 +89,42 @@ echo "<!DOCTYPE html>
         .btn-update {
             background-color: green; /* Green for update */
         }
+        .search-form {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .search-form input[type='date'] {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 150px;
+        }
+        .search-form button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-form button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <h2>لیست اطلاعات ثبت‌ کارمندان</h2>";
+    <h2>لیست اطلاعات ثبت‌ کارمندان</h2>
+
+    <form method='POST' class='search-form'>
+        <input type='date' name='start_date' value='$startDate' required>
+        <input type='date' name='end_date' value='$endDate' required>
+        <button type='submit' name='search'>جستجو</button>
+    </form>";
 
 if ($result->num_rows > 0) {
     // Start HTML table
@@ -92,6 +139,7 @@ if ($result->num_rows > 0) {
                 <th>نوع نتیجه/دستاورد</th>
                 <th>مشکلات/نواقص و کمبودات</th>
                 <th>آمریت راه حل پیشنهادی</th>
+                <th>تاریخ ثبت گرازش</th>
                 <th>ملاحظات</th>
                 <th>حذف</th>
                 <th>ویرایش</th>
@@ -109,6 +157,7 @@ if ($result->num_rows > 0) {
                 <td>" . $row["result"] . "</td>
                 <td>" . $row["problems"] . "</td>
                 <td>" . $row["resolve_sugestion"] . "</td>
+                <td>" . $row["Reg_Date"] . "</td>
                 <td>" . $row["observition"] . "</td>
                 <td>
                     <form method='POST' style='display:inline;'>

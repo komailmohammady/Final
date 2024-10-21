@@ -155,21 +155,13 @@
         </div>
 
         <div class="form-row" style="justify-content: center;">
-<<<<<<< HEAD
             <button type="submit" class="btn btn-primary">راجستر</button>
-=======
-<<<<<<< HEAD
             <button type="submit">ثبت کارمند</button>
-=======
-<<<<<<< HEAD
+
             <button type="submit" value="Post" class="btn btn-primary">راجستر</button>
-=======
+
             <button type="submit" value="Post"> راجستر</button>
->>>>>>> 611f05667c9aa7d880a27fda04f50c9ef6ebfdcd
->>>>>>> 43269a35badf523902af525aacd1dec7bf7551d8
->>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
->>>>>>> ffe61e3aa5fa4ec7f803a48a0ebfa718b0a1c8b0
-        </div>
+       </div>
 
         <!-- Password Input with Show/Hide Icon -->
         <div class="form-col position-relative">

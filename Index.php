@@ -37,12 +37,42 @@
                 </a>
                 <div id="reportsMenu" class="collapse">
                     <ul>
-                        <li><a href="dashboardpages/Employee_Report.php" class="d-block">ثبت گزارش</a></li>
-                        <li><a href="report_list.html" class="d-block">لیست گزارشات</a></li>
+                        <li><a href="dashboardpages/EmployeeReport.php" class="d-block">ثبت گزارش</a></li>
+                        <li><a href="dashboardpages/ShowEmployeeReport.php" class="d-block">لیست گزارشات</a></li>
                     </ul>
                 </div>
 
-                <a href="logout.html"><i class="bi bi-box-arrow-right"></i> خروج</a>
+                
+                
+
+ <?php
+session_start(); // Start the session
+
+// Check if user is logged in
+if (isset($_SESSION['username'])) {
+    echo "Welcome, " . htmlspecialchars($_SESSION['username']); // Use htmlspecialchars to prevent XSS
+    echo '<a href="#" id="logoutLink">Logout</a>';
+} else {
+    echo '<a href="login.php">خروج</a>'; // Fixed the tag here
+}
+?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() { // Ensure the DOM is fully loaded
+    const logoutLink = document.getElementById('logoutLink');
+    if (logoutLink) { // Check if logoutLink exists
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            if (confirm("آیا می‌خواهید خارج شوید؟")) {
+                window.location.href = "logout.php"; // Redirect to logout if confirmed
+            }
+        });
+    }
+});
+</script>
+
+
+
             </div>
             
             <!-- Main Content -->
@@ -135,15 +165,13 @@
 
     <!-- فوتر -->
     <footer>
-<<<<<<< HEAD
+
         <p>&copy; 2024 تمامی حقوق محفوظ است. طراحی شده توسط محصلین ممتاز تکنالوژی کمپیوتر.</p>
-=======
-<<<<<<<< HEAD:Index.php
+
         <p>&copy; 2024 تمام حقوق محفوظ است!</p>
-========
+
         <p>&copy; 2024 تمامی حقوق محفوظ است. طراحی شده توسط محصلین ممتاز تکنالوژی کمپیوتر.</p>
->>>>>>>> 611f05667c9aa7d880a27fda04f50c9ef6ebfdcd:dashboardpages/Employee.php
->>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
+
     </footer>
 
     <!-- Bootstrap JS and dependencies -->
