@@ -1,16 +1,5 @@
 <?php
-// Establish a database connection
-$servername = "localhost";  // Replace with your server name
-$username = "root";         // Replace with your database username
-$password = "";             // Replace with your database password
-$dbname = "final";          // Replace with your database name
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    include '../PHP/ConnectionToDatabase.php'; 
 
 // Handle delete request
 if (isset($_POST['delete'])) {
@@ -30,8 +19,10 @@ echo "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>جدول اطلاعات</title>
     <style>
+        *{
+        font-family: 'B Nazanin';
+        }  
         body {
-            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 20px;
             direction: rtl;
@@ -45,14 +36,15 @@ echo "<!DOCTYPE html>
             border-collapse: collapse;
             margin: 20px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 15px;
         }
         th, td {
-            padding: 12px;
+            padding: 5px;
             text-align: center;
             border: 1px solid #ddd;
         }
         th {
-            background-color: #4CAF50;
+            background-color: DodgerBlue;
             color: white;
         }
         tr:nth-child(even) {
@@ -67,12 +59,13 @@ echo "<!DOCTYPE html>
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 15px;
         }
         .btn-delete {
-            background-color: red; /* Red for delete */
+            background-color: orangered;
         }
         .btn-update {
-            background-color: green; /* Green for update */
+            background-color: orange;
         }
     </style>
 </head>

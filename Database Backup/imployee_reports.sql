@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Oct 17, 2024 at 08:45 AM
-=======
--- Generation Time: Oct 20, 2024 at 07:37 AM
->>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
+-- Generation Time: Oct 21, 2024 at 08:21 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,17 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `imployee_reports` (
-<<<<<<< HEAD
-  `ID` int(11) NOT NULL,
-  `گزارش فعالیت های انجام شده` varchar(80) NOT NULL,
-  `زمان اجرای فعالیت` varchar(40) NOT NULL,
-  `مربوط پلان عملیاتی/خارج فعالیت عملیاتی` varchar(80) NOT NULL,
-  `فیصدی پیشرفت` varchar(40) NOT NULL,
-  `(نتیجه(دستاورد` varchar(40) NOT NULL,
-  `مشکلات/نواقص و کمبودات` varchar(50) NOT NULL,
-  `راه حل پیشنهادی` varchar(60) NOT NULL,
-  `ملاحظات` varchar(60) NOT NULL
-=======
   `id` int(11) NOT NULL,
   `username` varchar(90) NOT NULL,
   `did_reports` varchar(150) DEFAULT NULL,
@@ -53,7 +38,6 @@ CREATE TABLE `imployee_reports` (
   `problems` varchar(99) DEFAULT NULL,
   `resolve_sugestion` varchar(99) DEFAULT NULL,
   `observition` varchar(240) DEFAULT NULL
->>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -64,12 +48,18 @@ CREATE TABLE `imployee_reports` (
 -- Indexes for table `imployee_reports`
 --
 ALTER TABLE `imployee_reports`
-<<<<<<< HEAD
-  ADD PRIMARY KEY (`ID`);
-=======
   ADD PRIMARY KEY (`id`),
   ADD KEY `username` (`username`);
->>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `imployee_reports`
+--
+ALTER TABLE `imployee_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -79,11 +69,7 @@ ALTER TABLE `imployee_reports`
 -- Constraints for table `imployee_reports`
 --
 ALTER TABLE `imployee_reports`
-<<<<<<< HEAD
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-=======
   ADD CONSTRAINT `imployee_reports_ibfk_1` FOREIGN KEY (`username`) REFERENCES `register_form` (`user`);
->>>>>>> c1d04958d888712f8b9653deeef6666639e81eda
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
