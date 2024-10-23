@@ -1,5 +1,15 @@
-    <!DOCTYPE html>
-    <html lang="fa">
+<?php
+// Database connection
+include 'PHP/ConnectionToDatabase.php';
+
+// Fetch the total number of reports
+$sql = "SELECT COUNT(*) as total_reports FROM employee_register";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$totalReports = $row['total_reports'];
+?>
+<!DOCTYPE html>
+<html lang="fa">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +19,16 @@
         <!-- Bootstrap Icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="stylesheet" href="Css/dash.css" type="text/css">
+        <Script>
+            setInterval(function() {
+            fetch('get_total_reports.php') // Endpoint to fetch total reports
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('totalReports').innerText = data.total_reports;
+            });
+            }, 60000); // Update every minute
+
+        </Script>
     </head>
     <body dir="rtl">
         <div class="container-fluid">
@@ -68,8 +88,8 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                     <i class="bi bi-people-fill" style="font-size: 2rem;"></i>
-                                    <h5 class="card-title">تعداد کاربران</h5>
-                                    <p class="card-text">125</p>
+                                    <h5 class="card-title">تعداد کارمندان</h5>
+                                    <p class="card-text"><?php echo $totalReports; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -143,4 +163,4 @@
         <script src="js/Search.js"></script> <!-- لینک به فایل جاوا اسکریپت خارجی -->
 
     </body>
-    </html>
+</html>
