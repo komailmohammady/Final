@@ -46,7 +46,7 @@ $result = $conn->query($sql);
 <body dir="rtl">
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center">
-        <h2 class="mb-4"><b>فرم ثبت کارمندان ریاست امور متعلمین و محصلین</b></h2>
+        <h2 class="mb-4"><b>لیست کارمندان ریاست امور متعلمین و محصلین</b></h2>
         <button type="button" class="btn-close" aria-label="Close" onclick="closeForm()" style="transform: rotate(180deg);"></button>
     </div>
 

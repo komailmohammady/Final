@@ -8,13 +8,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../Css/dash.css" type="text/css">
     <link rel="stylesheet" href="../Css/Employee_Report.css">
-
+    <link rel="stylesheet" href="../css/kamadatepicker.min.css">
     <script>
-        function closeForm() {
-            window.location.href = "../index.php";
+    // Function to confirm logout
+    function confirmLogout() {
+        var userConfirmed = confirm("آیا مطمئن هستید که می‌خواهید خارج شوید؟");
+        if (userConfirmed) {
+            window.location.href = '../PHP/logout.php';
+        } else {
+            return false;
         }
+    }
     </script>
-
     <style>
         body {
             background-color: #f8f9fa;
@@ -80,7 +85,7 @@
                     </ul>
                 </div>
 
-                <a href="logout.html"><i class="bi bi-box-arrow-right"></i> خروج</a>
+                <a href="#" onclick="confirmLogout()"><i class="bi bi-box-arrow-right"></i> خروج</a>
             </div>
             
             <!-- Main Content Area -->
@@ -140,7 +145,7 @@
                         
                         <div class="form-col">
                             <label for="date">تاریخ</label>
-                            <input type="date" id="date" name="Date" class="form-control">
+                            <input type="text" id="datepacker" name="Date" class="form-control">
                         </div>
                     </div>
 
@@ -150,7 +155,7 @@
                     </div>
 
                     <div class="form-row" style="justify-content: center;">
-                        <button type="submit" class="btn">ثبت گزارشات</button>
+                        <button type="submit" class="btn btn-primary">ثبت گزارشات</button>
                     </div>
                 </form>
             </div>
@@ -158,5 +163,27 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/assits/jquery.js"></script>
+    <script src="../js/assits/kamadatepicker.min.js"></script>
+    <script>
+        let options = {
+    placeholder: "تاریخ",
+    twodigit: false,
+    closeAfterSelect: false,
+    nextButtonIcon : "../img/timeir_next.png",
+    previousButtonIcon : "../img/timeir_prev.png",
+    buttonsColor:"blue",
+    forceFarsiDigits : true,
+    markToday: true,
+    markHolidays:true,
+    sync:true,
+    gotoToday:true
+}
+
+
+        kamaDatepicker('datepacker',options);
+        $("#datepacker").vla("1403/8/3")
+    </script>
 </body>
 </html>

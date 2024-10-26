@@ -10,7 +10,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../Css/dash.css" type="text/css">
     <link rel="stylesheet" href="../Css/Employee_Report.css" type="text/css">
-        <script src="../js/script.js"></script>
+    <script>
+    // Function to confirm logout
+    function confirmLogout() {
+        var userConfirmed = confirm("آیا مطمئن هستید که می‌خواهید خارج شوید؟");
+        if (userConfirmed) {
+            window.location.href = '../PHP/logout.php';
+        } else {
+            return false;
+        }
+    }
+    </script>
     <style>
         body {
         background-color: #f8f9fa;
@@ -86,7 +96,7 @@
                     </ul>
                 </div>
 
-                <a href="logout.html"><i class="bi bi-box-arrow-right"></i> خروج</a>
+                <a href="#" onclick="confirmLogout()"><i class="bi bi-box-arrow-right"></i> خروج</a>
             </div>
             
             <!-- Main Content Area -->
