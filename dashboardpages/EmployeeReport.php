@@ -139,8 +139,8 @@
                         </div>
                         
                         <div class="form-col">
-                            <label for="date">تاریخ</label>
-                            <input type="date" id="date" name="Date" class="form-control">
+                            <label for="dateInput">تاریخ</label>
+                            <input type="date" id="dateInput" name="Date" class="form-control">
                         </div>
                     </div>
 
@@ -158,5 +158,17 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <p>Today's Date: </p>
+
+    <script>
+ // Create a new Date object
+const today = new Date();
+
+// Format the date as YYYY-MM-DD
+const formattedDate = today.toISOString().slice(0, 10);
+
+// Set the value of the date input to the current date
+document.getElementById("dateInput").value = formattedDate;
+    </script>
 </body>
 </html>
