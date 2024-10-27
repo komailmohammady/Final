@@ -133,8 +133,18 @@
                             <input type="text" id="solve" name="Resolve_Sugestion" class="form-control" required>
                         </div>
                         <div class="form-col">
+<<<<<<< HEAD
                             <label for="Observation">ملاحظات</label>
                             <textarea name="Observation" id="Observation" class="form-control"></textarea>
+=======
+<<<<<<< HEAD
+                            <label for="dateInput">تاریخ</label>
+                            <input type="date" id="dateInput" name="Date" class="form-control">
+=======
+                            <label for="date">تاریخ</label>
+                            <input type="text" id="datepacker" name="Date" class="form-control">
+>>>>>>> 6a52a6d03f6bca579221fcfdf44a6376327086b0
+>>>>>>> 4e9ab85b86615e960bfda09f794b8d03bd078606
                         </div>
                     </div>
 
@@ -147,6 +157,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<<<<<<< HEAD
     <script src="../js/assits/jquery.js"></script>
     <script src="../js/assits/kamadatepicker.min.js"></script>
     <script>
@@ -166,6 +177,43 @@
             todayButtonText: "امروز",
             theme: "modern" // Use the 'modern' theme for a cleaner design
         });
+=======
+<<<<<<< HEAD
+    <p>Today's Date: </p>
+
+    <script>
+ // Create a new Date object
+const today = new Date();
+
+// Format the date as YYYY-MM-DD
+const formattedDate = today.toISOString().slice(0, 10);
+
+// Set the value of the date input to the current date
+document.getElementById("dateInput").value = formattedDate;
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/assits/jquery.js"></script>
+    <script src="../js/assits/kamadatepicker.min.js"></script>
+    <script>
+        let options = {
+    placeholder: "تاریخ",
+    twodigit: false,
+    closeAfterSelect: false,
+    nextButtonIcon : "../img/timeir_next.png",
+    previousButtonIcon : "../img/timeir_prev.png",
+    buttonsColor:"blue",
+    forceFarsiDigits : true,
+    markToday: true,
+    markHolidays:true,
+    sync:true,
+    gotoToday:true
+}
+
+
+        kamaDatepicker('datepacker',options);
+        $("#datepacker").vla("1403/8/3")
+>>>>>>> 6a52a6d03f6bca579221fcfdf44a6376327086b0
+>>>>>>> 4e9ab85b86615e960bfda09f794b8d03bd078606
     </script>
 </body>
 </html>
