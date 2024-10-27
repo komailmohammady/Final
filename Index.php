@@ -1,16 +1,11 @@
-
-
-
 <?php
-// Database connection
 include 'PHP/ConnectionToDatabase.php';
-
-// Fetch the total number of reports
 $sql = "SELECT COUNT(*) as total_reports FROM employee_register";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $totalReports = $row['total_reports'];
 ?>
+
 <!DOCTYPE html>
 <html lang="fa">
     <head>
@@ -31,6 +26,15 @@ $totalReports = $row['total_reports'];
             });
             }, 60000); // Update every minute
 
+            // Function to confirm logout
+            function confirmLogout() {
+            var userConfirmed = confirm("آیا مطمئن هستید که می‌خواهید خارج شوید؟");
+                if (userConfirmed) {
+                    window.location.href = 'PHP/logout.php';
+                } else {
+            return false;
+            }
+        }
         </Script>
     </head>
     <body dir="rtl">
@@ -65,8 +69,8 @@ $totalReports = $row['total_reports'];
                         </ul>
                     </div>
 
-                    <a href="logout.html"><i class="bi bi-box-arrow-right"></i> خروج</a>
-                </div>
+                    <a href="#" onclick="confirmLogout()"><i class="bi bi-box-arrow-right"></i> خروج</a>
+                    </div>
                 
                 <!-- Main Content -->
                 <div class="col-md-10 content">

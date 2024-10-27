@@ -2,7 +2,7 @@
 session_start();
 include '../PHP/ConnectionToDatabase.php';
 
-// Fetch all employee records from the database
+// Fetch all employee reports from the database
 $sql = "SELECT ID, Username, Did_Reports, Activity_Time, Plane, Improve_Precentage, Result, Problems, Resolve_Sugestion, Date, Observation FROM employeereport";
 $result = $conn->query($sql);
 ?>
@@ -12,10 +12,9 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جدول کارمندان</title>
+    <title>جدول گزارش کارمندان</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="../js/script.js"></script>
     <style>
         * {
             font-family: 'B Nazanin';
@@ -28,7 +27,7 @@ $result = $conn->query($sql);
             margin: 0;
         }
         .table-custom th {
-            background-color: #007bff;
+            background-color: DodgerBlue; /* Updated to DodgerBlue */
             color: white;
             text-align: center;
         }
@@ -50,7 +49,7 @@ $result = $conn->query($sql);
         <button type="button" class="btn btn-primary" onclick="window.location.href='EmployeeReport.php'">ثبت گزارش جدید</button>
     </div>
     <div class="table-responsive">
-        <table class="table table-bordered table-custom">
+        <table class="table table-bordered table-hover table-custom">
             <thead>
                 <tr>
                     <th>آی دی</th>
@@ -68,25 +67,31 @@ $result = $conn->query($sql);
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['ID']) ?></td>
+                            <td><?= htmlspecialchars($row['Username']) ?></td>
+                            <td><?= htmlspecialchars($row['Did_Reports']) ?></td>
+                            <td><?= htmlspecialchars($row['Activity_Time']) ?></td>
+                            <td><?= htmlspecialchars($row['Plane']) ?></td>
+                            <td><?= htmlspecialchars($row['Improve_Precentage']) ?></td>
+                            <td><?= htmlspecialchars($row['Result']) ?></td>
+                            <td><?= htmlspecialchars($row['Problems']) ?></td>
+                            <td><?= htmlspecialchars($row['Resolve_Sugestion']) ?></td>
+                            <td><?= htmlspecialchars($row['Date']) ?></td>
+                            <td><?= htmlspecialchars($row['Observation']) ?></td>
+                            <td>
+                                <a href='../PHP/Update_Employee_Report.php?ID=<?= $row['ID'] ?>' class='btn btn-warning btn-sm'>ویرایش</a>
+                                <button class='btn btn-danger btn-sm' onclick="confirmDelete('../PHP/delete_Employee_Report.php?ID=<?= $row['ID'] ?>');">حذف</button>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['ID']) ?></td>
-                        <td><?= htmlspecialchars($row['Username']) ?></td>
-                        <td><?= htmlspecialchars($row['Did_Reports']) ?></td>
-                        <td><?= htmlspecialchars($row['Activity_Time']) ?></td>
-                        <td><?= htmlspecialchars($row['Plane']) ?></td>
-                        <td><?= htmlspecialchars($row['Improve_Precentage']) ?></td>
-                        <td><?= htmlspecialchars($row['Result']) ?></td>
-                        <td><?= htmlspecialchars($row['Problems']) ?></td>
-                        <td><?= htmlspecialchars($row['Resolve_Sugestion']) ?></td>
-                        <td><?= htmlspecialchars($row['Date']) ?></td>
-                        <td><?= htmlspecialchars($row['Observation']) ?></td>
-                        <td>
-                            <a href='../PHP/Update_Employee_Report.php?ID=<?= $row['ID'] ?>' class='btn btn-warning btn-sm'>ویرایش</a>
-                            <button class='btn btn-danger btn-sm' onclick="confirmDelete('../PHP/delete_Employee_Report.php?ID=<?= $row['ID'] ?>');">حذف</button>
-                        </td>
+                        <td colspan="12">هیچ اطلاعاتی موجود نیست</td>
                     </tr>
-                <?php endwhile; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

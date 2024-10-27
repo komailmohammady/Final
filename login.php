@@ -112,7 +112,7 @@ $conn->close();
         <button type="submit" class="btn btn-primary btn-block w-100">ورود</button>
     </form>
 
-    <?php if (isset($error_message)): ?>
+    <?php if (!empty($error_message)): ?>
         <div class="alert alert-danger mt-3">
             <?php echo $error_message; ?>
         </div>

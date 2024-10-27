@@ -1,5 +1,5 @@
 <?php  
-// د ډیټابیس سره نښلول
+// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,68 +7,67 @@ $dbname = "final";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// که نښلونې ستونزه وي
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// د داخلي پلان د معلوماتو ترلاسه کول
+// Fetch internal plan data
 $sql_internal = "SELECT e.username, 
                         COALESCE(SUM(CAST(REPLACE(er.improve_precentage, '%', '') AS UNSIGNED)), 0) AS total_percentage 
-                 FROM (SELECT DISTINCT username FROM employee_reports) e
-                 LEFT JOIN employee_reports er 
-                       ON e.username = er.username AND er.plan IN ('پلان مربوطه')
+                 FROM (SELECT DISTINCT username FROM employeereport) e
+                 LEFT JOIN employeereport er 
+                       ON e.username = er.username AND er.Plane IN ('پلان مربوطه')
                  GROUP BY e.username";
 
-// د خارجي پلان د معلوماتو ترلاسه کول
+// Fetch external plan data
 $sql_external = "SELECT e.username, 
                         COALESCE(SUM(CAST(REPLACE(er.improve_precentage, '%', '') AS UNSIGNED)), 0) AS total_percentage 
-                 FROM (SELECT DISTINCT username FROM employee_reports) e
-                 LEFT JOIN employee_reports er 
-                       ON e.username = er.username AND er.plan IN ('خارج از پلان')
+                 FROM (SELECT DISTINCT username FROM employeereport) e
+                 LEFT JOIN employeereport er 
+                       ON e.username = er.username AND er.Plane IN ('خارج از پلان')
                  GROUP BY e.username";
 
-// د جاواسکرپټ لپاره د ډیټا جوړول
+// Prepare data for JavaScript
 $chartDataInternal = [];
 $chartDataExternal = [];
 
-// د داخلي پلان لپاره ډیټا
+// Get internal plan data
 if ($result_internal = $conn->query($sql_internal)) {
     while($row = $result_internal->fetch_assoc()) {
         $chartDataInternal[$row['username']] = (int)$row['total_percentage'];
     }
 }
 
-// د خارجي پلان لپاره ډیټا
+// Get external plan data
 if ($result_external = $conn->query($sql_external)) {
     while($row = $result_external->fetch_assoc()) {
         $chartDataExternal[$row['username']] = (int)$row['total_percentage'];
     }
 }
 
-// د ټولو کارمندانو لیست
+// Get all employee usernames
 $allEmployees = [];
-$query = "SELECT DISTINCT username FROM employee_reports";
+$query = "SELECT DISTINCT Username FROM employeereport";
 $allResult = $conn->query($query);
 while($row = $allResult->fetch_assoc()) {
-    $allEmployees[] = $row['username'];
+    $allEmployees[] = $row['Username'];
 }
 
 $conn->close();
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>راپور های کارمندان</title>
-    <script type="text/javascript" src="charts/loader.js"></script> <!-- محلي فایل -->
 
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawCharts);
 
       var chartDataInternal = [
-        ['Username', 'فیصدي'],
+        ['کارمند', 'فیصدي'],
         <?php
           foreach($allEmployees as $employee) {
               $percentage = isset($chartDataInternal[$employee]) ? $chartDataInternal[$employee] : 0;
@@ -78,7 +77,7 @@ $conn->close();
       ];
 
       var chartDataExternal = [
-        ['Username', 'فیصدي'],
+        ['کارمند', 'فیصدي'],
         <?php
           foreach($allEmployees as $employee) {
               $percentage = isset($chartDataExternal[$employee]) ? $chartDataExternal[$employee] : 0;
@@ -87,73 +86,128 @@ $conn->close();
         ?>
       ];
 
-      // د چارت رسمول
       function drawCharts() {
-        // د داخلي پلان چارت (د donut بڼه)
         var dataInternal = google.visualization.arrayToDataTable(chartDataInternal);
-        var optionsInternal = {
-          title: 'راپورکارمندان پلان داخلی',
-          pieHole: 0.4, // د چارت donut بڼه
-          width: '100%', // د چارت پراخوالی
-          height: '500' // د چارت لوړوالی
+        var options = {
+          pieHole: 0.4,
+          width: 500,
+          height: 500,
+          legend: 'none',
+          colors: ['DodgerBlue', '#FF5733', '#FFC300', '#DAF7A6', '#C70039'], // Customize colors with a palette
+          fontName: 'B Nazanin',
+          pieSliceText: 'label',
+          pieSliceTextStyle: {
+            color: 'white',
+            fontSize: 16
+          },
+          titleTextStyle: {
+            color: '#333',
+            fontSize: 18,
+            bold: true
+          }
         };
+        
         var chartInternal = new google.visualization.PieChart(document.getElementById('donutchartInternal'));
-        chartInternal.draw(dataInternal, optionsInternal);
+        chartInternal.draw(dataInternal, { ...options, title: 'گزاشات پلان مربوطه' });  // Add title for internal plan chart
 
-        // د خارجي پلان چارت (د pie بڼه)
         var dataExternal = google.visualization.arrayToDataTable(chartDataExternal);
-        var optionsExternal = {
-          title: 'راپورکارمندان پلان خارجی', // د چارت عنوان
-          width: '100%', // د چارت پراخوالی
-          height: '500' // د چارت لوړوالی
-        };
         var chartExternal = new google.visualization.PieChart(document.getElementById('donutchartExternal'));
-        chartExternal.draw(dataExternal);
+        chartExternal.draw(dataExternal, { ...options, title: 'گزارشات خارج از پلان ' });  // Add title for external plan chart
       }
 
-      // د ریسپانسیو چارت پراخوالی او لوړوالی
-      window.onresize = drawCharts; // د سکرین د اندازه بدلون لپاره دوباره رسمول
+      window.onresize = drawCharts;
     </script>
     <style>
         body {
+            font-family: 'B Nazanin', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0; /* د مارجن لرې کول */
+            margin: 0;
+            background-color: #e9ecef; /* Light gray background */
         }
         h1 {
-            text-align: center; /* عنوان مرکز ته راوستل */
-            margin-bottom: 20px; /* د عنوان او چارت ترمنځ فاصلې زیاتول */
+            text-align: center;
+            margin-bottom: 20px;
+            color: #212529; /* Dark gray text */
         }
         .charts-container {
-            display: flex; /* د چارتونو لپاره فلیکس باکس */
-            justify-content: space-between; /* د چارتونو ترمنځ فاصلې */
-            width: 80%; /* د چارتونو د کانتینر پراخوالی */
-            margin-top: 20px; /* د چارتونو او کارمندانو نومونو ترمنځ فاصله */
+            display: flex;
+            width: 80%;
+            margin-top: 20px;
+            justify-content: center;  /* Center the charts */
+            align-items: center;      /* Center vertically */
         }
         #donutchartInternal, #donutchartExternal {
-            width: 800px; /* د چارت پراخوالی */
-            height: 500px; /* د چارت لوړوالی */
+            width: 500px;
+            height: 500px;
+            margin: 0 20px; /* Add margin between charts */
         }
         .chart-title {
             text-align: center;
-            margin-top: 20px; /* د عنوان او چارت ترمنځ فاصله */
+            margin-top: 20px;
+            font-size: 1.5em;  /* Set a slightly smaller font size for titles */
+            color: #343a40;     /* Dark gray color for titles */
+        }
+        table {
+            width: 80%;
+            margin-top: 30px;
+            border-collapse: collapse;
+            text-align: center;
+            background-color: #fff; /* White background for the table */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for the table */
+        }
+        th, td {
+            border: 1px solid #dee2e6; /* Light gray border */
+            padding: 12px;
+        }
+        th {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white; /* White text */
+            font-weight: bold; /* Bold font for header */
+        }
+        tr:hover {
+            background-color: #f1f1f1; /* Highlight on hover */
         }
     </style>
 </head>
-<body>
-    <h1>بررسی عمومي راپور هایی کارمندان</h1> <!-- د عنوان اضافه کول -->
+<body dir="rtl">
+    <h1>بررسی عمومي راپور هایی کارمندان</h1>
     <div class="charts-container">
         <div>
-            <h2 class="chart-title">راپورکارمندان پلان داخلی</h2> <!-- د داخلي پلان عنوان -->
-            <div id="donutchartInternal"></div> <!-- د داخلي پلان چارت ځای -->
+            <h2 class="chart-title">گزارشات پلان مربوطه</h2>
+            <div id="donutchartInternal"></div>
         </div>
         <div>
-            <h2 class="chart-title">راپورکارمندان پلان خارجی</h2> <!-- د خارجي پلان عنوان -->
-            <div id="donutchartExternal"></div> <!-- د خارجي پلان چارت ځای -->
+            <h2 class="chart-title">گزارشات خارج از پلان </h2>
+            <div id="donutchartExternal"></div>
         </div>
     </div>
+
+    <!-- Table displaying employee data -->
+    <table>
+        <thead>
+            <tr>
+                <th>نام و تخلص کارمند</th>
+                <th>پلان مربوطه (%)</th>
+                <th>خارج از پلان (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($allEmployees as $employee) {
+                    $internalPercentage = isset($chartDataInternal[$employee]) ? $chartDataInternal[$employee] : 0;
+                    $externalPercentage = isset($chartDataExternal[$employee]) ? $chartDataExternal[$employee] : 0;
+                    echo "<tr>
+                            <td>$employee</td>
+                            <td>$internalPercentage%</td>
+                            <td>$externalPercentage%</td>
+                          </tr>";
+                }
+            ?>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -6,7 +6,6 @@ include '../PHP/ConnectionToDatabase.php';
 $sql = "SELECT * FROM employee_register";
 $result = $conn->query($sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -14,8 +13,9 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جدول کارمندان</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="../js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <style>
         * {
             font-family: 'B Nazanin';
@@ -73,19 +73,19 @@ $result = $conn->query($sql);
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
-                            <td>" . htmlspecialchars($row['ID']) . "</td>
-                            <td>" . htmlspecialchars($row['Name']) . "</td>
-                            <td>" . htmlspecialchars($row['LastName']) . "</td>
-                            <td>" . htmlspecialchars($row['FatherName']) . "</td>
-                            <td>" . (isset($row['Username']) ? htmlspecialchars($row['Username']) : 'ناموجود') . "</td>
-                            <td>" . htmlspecialchars($row['PostType']) . "</td>
-                            <td>" . htmlspecialchars($row['JobType']) . "</td>
-                            <td>" . htmlspecialchars($row['ReleventDep']) . "</td>
-                            <td>" . htmlspecialchars($row['PostNo']) . "</td>
-                            <td>" . htmlspecialchars($row['Observation']) . "</td>
+                            <td>" . $row['ID'] . "</td>
+                            <td>" . $row['Name'] . "</td>
+                            <td>" . $row['LastName'] . "</td>
+                            <td>" . $row['FatherName'] . "</td>
+                            <td>" . $row['Username'] . "</td>
+                            <td>" . $row['PostType'] . "</td>
+                            <td>" . $row['JobType'] . "</td>
+                            <td>" . $row['ReleventDep'] . "</td>
+                            <td>" . $row['PostNo'] . "</td>
+                            <td>" . $row['Observation'] . "</td>
                             <td>
-                                <a href='../PHP/employee_form_update.php?ID=" . htmlspecialchars($row['ID']) . "' class='btn btn-warning btn-sm'>ویرایش</a>
-                                <button class='btn btn-danger btn-sm' onclick=\"confirmDelete('" . htmlspecialchars($row['ID']) . "')\">حذف</button>
+                                <a href='../PHP/employee_form_update.php?ID=" . $row['ID'] . "' class='btn btn-warning btn-sm'>ویرایش</a>
+                                <a href='javascript:void(0);' class='btn btn-danger btn-sm' onclick=\"confirmDelete('../PHP/delete_employee.php?ID=" . $row['ID'] . "');\">حذف</a>
                             </td>
                         </tr>";
                     }
@@ -98,26 +98,21 @@ $result = $conn->query($sql);
     </div>
 </div>
 
-<!-- SweetAlert JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
-function confirmDelete(id) {
-    Swal.fire({
-        title: 'آیا مطمئن هستید؟',
-        text: "این عمل غیر قابل بازگشت است!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'بله، حذف کن!',
-        cancelButtonText: 'خیر، منصرف شدم'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '../PHP/delete_employee.php?ID=' + id;
-        }
-    });
-}
+    function confirmDelete(url) {
+        swal({
+            title: "آیا شما مطمئن هستید؟",
+            text: "این کاربر به طور دائمی حذف خواهد شد!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "بله، حذف کن!",
+            cancelButtonText: "خیر، منصرف شوم!",
+            closeOnConfirm: false
+        }, function() {
+            window.location.href = url;
+        });
+    }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
