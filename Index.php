@@ -231,7 +231,7 @@ $EmployeeReport = $row_reports['total_ShowEmployeeReport'];
     </div>
 </div>
 
-<p>This is new code added</p>
+
 <!-- فوتر -->
 <footer>
     <p>&copy; 2024 تمامی حقوق محفوظ است. طراحی شده توسط محصلین ممتاز تکنالوژی کمپیوتر.</p>
