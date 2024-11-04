@@ -16,7 +16,11 @@ body {
 
 .login-container h2 {
     text-align: center;
+<<<<<<< HEAD
     color: #073B4C;
+=======
+    color: #007bff;
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
 }
 
 .form-control {
@@ -24,14 +28,22 @@ body {
 }
 
 .btn-primary {
+<<<<<<< HEAD
     background-color: #073B4C;
+=======
+    background-color: DodgerBlue;
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
     border: none;
     font-size: 20px;
     height: 45px;
 }
 
 .btn-primary:hover {
+<<<<<<< HEAD
     background-color: #14919B;
+=======
+    background-color: #0056b3;
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
 }
 
 .toggle-password {

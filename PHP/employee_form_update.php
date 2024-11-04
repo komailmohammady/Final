@@ -160,7 +160,11 @@ if (isset($_POST['update'])) {
                     <div class="form-row">
                         <div class="form-col">
                             <label for="persent">کاربر</label>
+<<<<<<< HEAD
                             <input type="text" id="persent" name="Username" class="form-control" value="<?php echo $employee['Username']; ?>" required>
+=======
+                            <input type="text" id="persent" name="Username" class="form-control" value="<?php echo $employee['Username']; ?>" >
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
                         </div>
 
                         <div class="form-col position-relative">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+<<<<<<< HEAD
 include 'PHP/ConnectionToDatabase.php'; // Adjusted path
 
 // Set default date and name filter values
@@ -20,6 +21,12 @@ if ($filters) {
     $sql .= " WHERE " . implode(" AND ", $filters);
 }
 
+=======
+include '../PHP/ConnectionToDatabase.php';
+
+// Fetch all employee reports from the database
+$sql = "SELECT ID, Username, Did_Reports, Activity_Time, Plane, Improve_Precentage, Result, Problems, Resolve_Sugestion, Date, Observation FROM employeereport";
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
 $result = $conn->query($sql);
 ?>
 
@@ -28,12 +35,18 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>جدول کارمندان</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../Css/kamadatepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="../js/script.js"></script>
+=======
+    <title>جدول گزارش کارمندان</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
     <style>
         * {
             font-family: 'B Nazanin';
@@ -46,13 +59,18 @@ $result = $conn->query($sql);
             margin: 0;
         }
         .table-custom th {
+<<<<<<< HEAD
             background-color: #007bff;
+=======
+            background-color: DodgerBlue; /* Updated to DodgerBlue */
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
             color: white;
             text-align: center;
         }
         .table-custom td {
             text-align: center;
         }
+<<<<<<< HEAD
         .table-responsive {
             margin: 0;
         }
@@ -101,10 +119,19 @@ $result = $conn->query($sql);
             font-size: 14px;
             margin: 0;
         }
+=======
+        .table-custom .btn {
+            margin: 1px;
+        }
+        .table-responsive {
+            margin: 0;
+        }
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
     </style>
 </head>
 <body dir="rtl">
 <div class="container mt-5">
+<<<<<<< HEAD
     <!-- Header with Logo Placeholders -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -150,10 +177,19 @@ $result = $conn->query($sql);
 
     <div class="table-responsive mb-4">
         <table class="table table-bordered table-custom">
+=======
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mb-4"><b>فارمت گزارشدهی کارمندان</b></h2>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='EmployeeReport.php'">ثبت گزارش جدید</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-custom">
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
             <thead>
                 <tr>
                     <th>آی دی</th>
                     <th>نام کاربر</th>
+<<<<<<< HEAD
                     <th>گزارش فعالیت های انجام شده</th>
                     <th>زمان اجرای فعالیت</th>
                     <th>پلان</th>
@@ -190,6 +226,46 @@ $result = $conn->query($sql);
                         </td>
                     </tr>
                 <?php endwhile; ?>
+=======
+                    <th>گزارش</th>
+                    <th>زمان</th>
+                    <th>پلان</th>
+                    <th>پیشرفت</th>
+                    <th>نتیجه</th>
+                    <th>مشکلات</th>
+                    <th>راه حل</th>
+                    <th>تاریخ</th>
+                    <th>ملاحظات</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['ID']) ?></td>
+                            <td><?= htmlspecialchars($row['Username']) ?></td>
+                            <td><?= htmlspecialchars($row['Did_Reports']) ?></td>
+                            <td><?= htmlspecialchars($row['Activity_Time']) ?></td>
+                            <td><?= htmlspecialchars($row['Plane']) ?></td>
+                            <td><?= htmlspecialchars($row['Improve_Precentage']) ?></td>
+                            <td><?= htmlspecialchars($row['Result']) ?></td>
+                            <td><?= htmlspecialchars($row['Problems']) ?></td>
+                            <td><?= htmlspecialchars($row['Resolve_Sugestion']) ?></td>
+                            <td><?= htmlspecialchars($row['Date']) ?></td>
+                            <td><?= htmlspecialchars($row['Observation']) ?></td>
+                            <td>
+                                <a href='../PHP/Update_Employee_Report.php?ID=<?= $row['ID'] ?>' class='btn btn-warning btn-sm'>ویرایش</a>
+                                <button class='btn btn-danger btn-sm' onclick="confirmDelete('../PHP/delete_Employee_Report.php?ID=<?= $row['ID'] ?>');">حذف</button>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="12">هیچ اطلاعاتی موجود نیست</td>
+                    </tr>
+                <?php endif; ?>
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
             </tbody>
         </table>
     </div>
@@ -201,7 +277,11 @@ $result = $conn->query($sql);
     function confirmDelete(url) {
         Swal.fire({
             title: "آیا مطمئن هستید؟",
+<<<<<<< HEAD
             text: "این گزارش قابل بازگشت نیست!",
+=======
+            text: "این عملیات قابل بازگشت نیست!",
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -214,9 +294,12 @@ $result = $conn->query($sql);
             }
         });
     }
+<<<<<<< HEAD
     function printPage() {
         window.print();
     }
+=======
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
 </script>
 </body>
 </html>

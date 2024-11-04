@@ -16,7 +16,10 @@ if (isset($_GET['ID'])) {
     if ($stmt->execute()) {
         // نمایش پیام موفقیت در حذف و هدایت به لیست کارمندان
         echo "<script>
+<<<<<<< HEAD
             alert('موفقانه حذف شد!');
+=======
+>>>>>>> 86d55ce7414deceb38c987824110e342c508389c
             window.location.href = '../dashboardpages/ShowEmployeeReport.php';
         </script>";
     } else {
