@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 07:27 AM
+-- Generation Time: Oct 28, 2024 at 05:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,34 +24,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `register`
+-- Table structure for table `messages`
 --
 
-CREATE TABLE `register` (
-  `ID` int(11) NOT NULL,
-  `اسم` varchar(40) NOT NULL,
-  `تخلص` varchar(40) NOT NULL,
-  `ولد` varchar(40) NOT NULL,
-  `بست` varchar(40) NOT NULL,
-  `عنوان بست` varchar(40) NOT NULL,
-  `آمریت مربوطه` varchar(40) NOT NULL,
-  `نوعیت وظیفه` varchar(40) NOT NULL,
-  `کاربر` varchar(40) NOT NULL,
-  `رمز عبور` varchar(40) NOT NULL,
-  `تایید رمز عبور` varchar(40) NOT NULL,
-  `ملاحظات` varchar(60) NOT NULL
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `date_sent` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `message`, `date_sent`) VALUES
+(1, 'send this message', '2024-10-27 09:27:53'),
+(2, 'your close to your gules  ', '2024-10-27 09:30:01');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `register`
+-- Indexes for table `messages`
 --
-ALTER TABLE `register`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `کاربر` (`کاربر`);
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

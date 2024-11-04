@@ -1,0 +1,22 @@
+/* style.css */
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    margin-top: 15%;
+  }
+  
+  h2 {
+    color: #343a40;
+  }
+  
+  p {
+    color: #6c757d;
+  }
+  
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 1.2em;
+  }
+  

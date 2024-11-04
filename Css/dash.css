@@ -10,7 +10,7 @@
 }
 
 :root {
-    --primary-color: DodgerBlue;
+    --primary-color: #073B4C;
     --text-color: white;
 }
 
@@ -22,7 +22,7 @@ body {
 
 .sidebar {
     height: 100vh;
-    background-color: var(--primary-color);
+    background-color:#073B4C;
     color: var(--text-color);
     padding-top: 20px;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #0056b3;
+    background-color: #14919B;
     border-radius: 10px;
     /* Darker shade on hover */
 }
@@ -55,6 +55,7 @@ body {
 
 .sidebar i {
     margin-right: 10px;
+    color: var(--text-color);
 }
 
 /* Logo Styles */
@@ -67,7 +68,7 @@ body {
 
 /* Footer Styles */
 footer {
-    background-color: DodgerBlue;
+    background-color:#073B4C;
     color: white;
     text-align: center;
     padding: 10px 0;
